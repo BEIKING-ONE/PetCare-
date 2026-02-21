@@ -1,0 +1,42 @@
+<!-- pages/collection/collection.wxml -->
+<view class="collection-page">
+  <!-- 收藏头部 -->
+  <view class="collection-header">
+    <text class="page-title">❤️ 我的收藏</text>
+    <text class="page-subtitle">资讯收藏</text>
+  </view>
+
+  <!-- 资讯收藏列表 -->
+  <view class="collection-list">
+    <block wx:for="{{collections}}" wx:key="id">
+      <view class="news-card" bindtap="viewNews" data-id="{{item.id}}">
+        <!-- 资讯图标 -->
+        <view class="news-image">
+          <text class="news-emoji">{{item.emoji || '📰'}}</text>
+        </view>
+
+        <!-- 资讯信息 -->
+        <view class="news-info">
+          <text class="news-title">{{item.title}}</text>
+          <text class="news-content">{{item.content}}</text>
+          <view class="news-meta">
+            <text class="news-tag {{item.type}}">{{item.typeText}}</text>
+            <text class="news-views">👁 {{item.views}}</text>
+          </view>
+          <view class="news-actions">
+            <text class="collect-time">收藏于 {{item.collectTime}}</text>
+            <text class="action-btn cancel" catchtap="cancelCollection" data-id="{{item.id}}">取消收藏</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{collections.length === 0}}">
+    <text class="empty-icon">📰</text>
+    <text class="empty-text">暂无资讯收藏</text>
+    <text class="empty-tip">去资讯看看吧～</text>
+    <button class="go-btn" bindtap="goToMessage">去看资讯</button>
+  </view>
+</view>

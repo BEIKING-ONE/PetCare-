@@ -1,0 +1,58 @@
+<!-- pages/pets/pets.wxml -->
+<view class="pets-page">
+  <!-- 宠物头部 -->
+  <view class="pets-header">
+    <text class="page-title">🐾 我的宠物</text>
+    <button class="add-pet-btn" bindtap="addPet">+ 添加宠物</button>
+  </view>
+
+  <!-- 宠物列表 -->
+  <view class="pets-list">
+    <block wx:for="{{pets}}" wx:key="id">
+      <view class="pet-card" bindtap="viewPetDetail" data-id="{{item.id}}">
+        <!-- 宠物头像 -->
+        <view class="pet-avatar">
+          <image 
+            class="pet-avatar-img" 
+            src="{{item.avatar}}" 
+            mode="aspectFill"
+            wx:if="{{item.avatar && item.avatar.length > 4}}"
+          />
+          <text class="pet-emoji" wx:else>{{item.avatar || '🐾'}}</text>
+        </view>
+
+        <!-- 宠物信息 -->
+        <view class="pet-info">
+          <view class="pet-name-section">
+            <text class="pet-name">{{item.name}}</text>
+            <text class="pet-type">{{item.typeName}}</text>
+          </view>
+          <view class="pet-details">
+            <text class="detail-item">品种: {{item.breed}}</text>
+            <text class="detail-item">年龄: {{item.age}}</text>
+            <text class="detail-item">体重: {{item.weight}}</text>
+            <text class="detail-item">性别: {{item.gender}}</text>
+          </view>
+          <view class="pet-meta">
+            <text class="meta-item">生日: {{item.birthday}}</text>
+            <text class="meta-item health-{{item.healthStatus}}">健康状态: {{item.healthStatus}}</text>
+          </view>
+        </view>
+
+        <!-- 宠物操作 -->
+        <view class="pet-actions" catchtap>
+          <text class="action-btn edit" bindtap="editPet" data-id="{{item.id}}">编辑</text>
+          <text class="action-btn delete" bindtap="deletePet" data-id="{{item.id}}">删除</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{pets.length === 0}}">
+    <text class="empty-icon">🐾</text>
+    <text class="empty-text">暂无宠物</text>
+    <text class="empty-tip">添加你的第一只宠物吧</text>
+    <button class="add-first-btn" bindtap="addPet">添加宠物</button>
+  </view>
+</view>

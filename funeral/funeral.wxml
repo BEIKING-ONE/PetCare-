@@ -1,0 +1,87 @@
+<!-- pages/funeral/funeral.wxml -->
+<view class="funeral-page">
+  <!-- 页面头部 -->
+  <view class="funeral-header">
+    <text class="page-title">🕊️ 宠物丧葬服务</text>
+  </view>
+
+  <!-- 服务介绍 -->
+  <view class="service-intro">
+    <view class="intro-card">
+      <text class="intro-icon">💖</text>
+      <text class="intro-title">专业宠物丧葬服务</text>
+      <text class="intro-desc">为您的爱宠提供温馨、专业的最后一程服务，让它们安心离去</text>
+    </view>
+  </view>
+
+  <!-- 服务项目 -->
+  <view class="service-items">
+    <text class="section-title">服务项目</text>
+    <view class="item-list">
+      <view class="service-item" bindtap="selectService" data-service="cremation">
+        <view class="item-icon">🔥</view>
+        <view class="item-info">
+          <text class="item-title">火化服务</text>
+          <text class="item-desc">专业火化设备，环保处理</text>
+          <text class="item-price">¥800-2000</text>
+        </view>
+        <text class="item-arrow">></text>
+      </view>
+      <view class="service-item" bindtap="selectService" data-service="urn">
+        <view class="item-icon">🏺</view>
+        <view class="item-info">
+          <text class="item-title">骨灰盒</text>
+          <text class="item-desc">精美骨灰盒，永久保存</text>
+          <text class="item-price">¥300-1000</text>
+        </view>
+        <text class="item-arrow">></text>
+      </view>
+      <view class="service-item" bindtap="selectService" data-service="burial">
+        <view class="item-icon">🌳</view>
+        <view class="item-info">
+          <text class="item-title">树葬服务</text>
+          <text class="item-desc">生态树葬，回归自然</text>
+          <text class="item-price">¥1500-3000</text>
+        </view>
+        <text class="item-arrow">></text>
+      </view>
+      <view class="service-item" bindtap="selectService" data-service="memorial">
+        <view class="item-icon">🪦</view>
+        <view class="item-info">
+          <text class="item-title">纪念墓碑</text>
+          <text class="item-desc">个性化墓碑，永久纪念</text>
+          <text class="item-price">¥2000-5000</text>
+        </view>
+        <text class="item-arrow">></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 预约表单 -->
+  <view class="booking-form">
+    <text class="section-title">预约服务</text>
+    <view class="form-card">
+      <view class="form-item">
+        <text class="form-label">宠物姓名</text>
+        <input class="form-input" placeholder="请输入宠物姓名" value="{{petName}}" bindinput="inputPetName" />
+      </view>
+      <view class="form-item">
+        <text class="form-label">宠物类型</text>
+        <input class="form-input" placeholder="例如：狗狗、猫咪" value="{{petType}}" bindinput="inputPetType" />
+      </view>
+      <view class="form-item">
+        <text class="form-label">联系电话</text>
+        <input class="form-input" placeholder="请输入联系电话" value="{{phone}}" bindinput="inputPhone" />
+      </view>
+      <view class="form-item">
+        <text class="form-label">服务需求</text>
+        <textarea class="form-textarea" placeholder="请描述您的服务需求" value="{{requirements}}" bindinput="inputRequirements" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 提交预约按钮（垂直居中位置） -->
+  <view class="submit-section">
+    <button class="submit-btn" bindtap="submitBooking">提交预约</button>
+  </view>
+</view>

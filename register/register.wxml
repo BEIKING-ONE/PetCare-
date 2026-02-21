@@ -1,0 +1,75 @@
+<view class="register-container">
+  <view class="register-header">
+    <text class="logo-emoji">🐾</text>
+    <text class="title">用户注册</text>
+    <text class="subtitle">加入宠物管家，开启爱宠之旅</text>
+  </view>
+  
+  <view class="register-form">
+    <view class="form-item">
+      <text class="form-icon">📱</text>
+      <input 
+        class="form-input" 
+        type="number"
+        placeholder="请输入手机号" 
+        value="{{phone}}"
+        bindinput="onPhoneInput"
+        maxlength="11"
+      />
+    </view>
+    
+    <view class="form-item">
+      <text class="form-icon">👤</text>
+      <input 
+        class="form-input" 
+        type="text"
+        placeholder="请输入昵称" 
+        value="{{nickname}}"
+        bindinput="onNicknameInput"
+        maxlength="20"
+      />
+    </view>
+    
+    <view class="form-item">
+      <text class="form-icon">🔒</text>
+      <input 
+        class="form-input" 
+        type="password"
+        placeholder="请输入密码（6-20位）" 
+        value="{{password}}"
+        bindinput="onPasswordInput"
+        maxlength="20"
+      />
+    </view>
+    
+    <view class="form-item">
+      <text class="form-icon">🔒</text>
+      <input 
+        class="form-input" 
+        type="password"
+        placeholder="请确认密码" 
+        value="{{confirmPassword}}"
+        bindinput="onConfirmPasswordInput"
+        maxlength="20"
+      />
+    </view>
+    
+    <button 
+      class="register-btn {{loading ? 'loading' : ''}}" 
+      bindtap="register"
+      disabled="{{loading || !canSubmit}}"
+    >
+      <text wx:if="{{loading}}">注册中...</text>
+      <text wx:else>立即注册</text>
+    </button>
+    
+    <view class="form-footer">
+      <text class="footer-text">已有账号？</text>
+      <text class="link-text" bindtap="goToLogin">立即登录</text>
+    </view>
+  </view>
+  
+  <view class="tips">
+    <text>注册即表示同意《用户协议》和《隐私政策》</text>
+  </view>
+</view>

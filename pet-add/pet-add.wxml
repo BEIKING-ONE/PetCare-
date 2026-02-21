@@ -1,0 +1,228 @@
+<!-- pages/pet-add/pet-add.wxml -->
+<view class="pet-add-page">
+  <!-- 头像选择 -->
+  <view class="form-section">
+    <view class="section-title">宠物头像</view>
+    <view class="avatar-section">
+      <!-- 当前头像显示 -->
+      <view class="avatar-preview" bindtap="showEmojiPicker">
+        <text class="avatar-emoji-large">{{pet.avatar || '🐾'}}</text>
+        <view class="avatar-edit-tip">点击选择头像</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Emoji选择器弹窗 -->
+  <view class="emoji-picker-modal" wx:if="{{showEmojiPicker}}" bindtap="hideEmojiPicker">
+    <view class="emoji-picker-content" catchtap>
+      <view class="emoji-picker-header">
+        <text class="emoji-picker-title">选择Emoji头像</text>
+        <text class="emoji-picker-close" bindtap="hideEmojiPicker">✕</text>
+      </view>
+      
+      <scroll-view scroll-y class="emoji-picker-body">
+        <view class="emoji-category">
+          <text class="category-title">🐕 狗狗</text>
+          <view class="emoji-grid">
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐕">🐕</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐶">🐶</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🦮">🦮</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐩">🐩</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐕‍🦺">🐕‍🦺</text>
+          </view>
+        </view>
+        
+        <view class="emoji-category">
+          <text class="category-title">🐱 猫咪</text>
+          <view class="emoji-grid">
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐱">🐱</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐈">🐈</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐈‍⬛">🐈‍⬛</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="😺">😺</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="😸">😸</text>
+          </view>
+        </view>
+        
+        <view class="emoji-category">
+          <text class="category-title">🐰 兔子</text>
+          <view class="emoji-grid">
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐰">🐰</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐇">🐇</text>
+          </view>
+        </view>
+        
+        <view class="emoji-category">
+          <text class="category-title">🐹 仓鼠</text>
+          <view class="emoji-grid">
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐹">🐹</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐭">🐭</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐁">🐁</text>
+          </view>
+        </view>
+        
+        <view class="emoji-category">
+          <text class="category-title">🐦 鸟类</text>
+          <view class="emoji-grid">
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐦">🐦</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐥">🐥</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐤">🐤</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐣">🐣</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🦜">🦜</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🦢">🦢</text>
+          </view>
+        </view>
+        
+        <view class="emoji-category">
+          <text class="category-title">🐟 鱼类</text>
+          <view class="emoji-grid">
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐟">🐟</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐠">🐠</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐡">🐡</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🦈">🦈</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐬">🐬</text>
+          </view>
+        </view>
+        
+        <view class="emoji-category">
+          <text class="category-title">🦎 爬行类</text>
+          <view class="emoji-grid">
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🦎">🦎</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐢">🐢</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐍">🐍</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🦖">🦖</text>
+          </view>
+        </view>
+        
+        <view class="emoji-category">
+          <text class="category-title">🐾 其他动物</text>
+          <view class="emoji-grid">
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐷">🐷</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐮">🐮</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐴">🐴</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐑">🐑</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐘">🐘</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🦁">🦁</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐯">🐯</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐻">�</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🦊">🦊</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐼">🐼</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🐨">🐨</text>
+            <text class="emoji-item" bindtap="selectEmoji" data-emoji="🦝">🦝</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="form-section">
+    <view class="section-title">基本信息</view>
+    <view class="form-item">
+      <text class="form-label">宠物名称</text>
+      <input 
+        class="form-input" 
+        placeholder="请输入宠物名称" 
+        value="{{pet.name}}"
+        bindinput="onNameInput"
+      />
+    </view>
+    <view class="form-item">
+      <text class="form-label">宠物类型</text>
+      <picker 
+        mode="selector" 
+        range="{{petTypes}}" 
+        value="{{petTypeIndex}}"
+        bindchange="onPetTypeChange"
+      >
+        <view class="picker-value">
+          <text>{{petTypes[petTypeIndex] || '请选择'}}</text>
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">品种</text>
+      <input 
+        class="form-input" 
+        placeholder="请输入品种" 
+        value="{{pet.breed}}"
+        bindinput="onBreedInput"
+      />
+    </view>
+    <view class="form-item">
+      <text class="form-label">性别</text>
+      <picker 
+        mode="selector" 
+        range="{{genders}}" 
+        value="{{genderIndex}}"
+        bindchange="onGenderChange"
+      >
+        <view class="picker-value">
+          <text>{{genders[genderIndex] || '请选择'}}</text>
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">生日</text>
+      <picker 
+        mode="date" 
+        value="{{pet.birthday}}"
+        bindchange="onBirthdayChange"
+      >
+        <view class="picker-value">
+          <text>{{formattedBirthday || '请选择'}}</text>
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">体重 (kg)</text>
+      <input 
+        class="form-input" 
+        type="digit"
+        placeholder="请输入体重" 
+        value="{{pet.weight}}"
+        bindinput="onWeightInput"
+      />
+    </view>
+  </view>
+
+  <!-- 健康记录 -->
+  <view class="form-section">
+    <view class="section-title">健康记录</view>
+    <view class="form-item">
+      <text class="form-label">健康状况</text>
+      <textarea 
+        class="form-textarea" 
+        placeholder="请输入健康状况" 
+        value="{{pet.health_status}}"
+        bindinput="onHealthStatusInput"
+        maxlength="200"
+      />
+    </view>
+    <view class="form-item">
+      <text class="form-label">疫苗记录</text>
+      <textarea 
+        class="form-textarea" 
+        placeholder="请输入疫苗记录" 
+        value="{{pet.vaccine_record}}"
+        bindinput="onVaccineRecordInput"
+        maxlength="200"
+      />
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <button class="submit-btn" bindtap="submitPet" loading="{{loading}}">
+      {{isEdit ? '保存修改' : '添加宠物'}}
+    </button>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-overlay" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">保存中...</text>
+  </view>
+</view>

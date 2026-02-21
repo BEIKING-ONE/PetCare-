@@ -1,0 +1,60 @@
+<!-- pages/address-add/address-add.wxml -->
+<view class="address-add-page">
+  <!-- 页面头部 -->
+  <view class="page-header">
+    <text class="header-title">{{id ? '编辑地址' : '添加地址'}}</text>
+    <text class="header-back" bindtap="navigateBack">✕</text>
+  </view>
+
+  <!-- 地址表单 -->
+  <view class="address-form">
+    <!-- 收货人信息 -->
+    <view class="form-section">
+      <view class="form-item">
+        <text class="form-label">收货人</text>
+        <input class="form-input" placeholder="请输入收货人姓名" value="{{name}}" bindinput="bindNameInput" />
+      </view>
+      <view class="form-item">
+        <text class="form-label">手机号码</text>
+        <input class="form-input" placeholder="请输入手机号码" value="{{phone}}" bindinput="bindPhoneInput" type="number" maxlength="11" />
+      </view>
+    </view>
+
+    <!-- 地区选择 -->
+    <view class="form-section">
+      <view class="form-item region-item">
+        <text class="form-label">所在地区</text>
+        <picker mode="region" value="{{region}}" bindchange="bindRegionChange" name="region">
+          <view class="region-picker">
+            <text wx:if="{{province && city && district}}">{{province}} {{city}} {{district}}</text>
+            <text wx:else class="placeholder">请选择地区</text>
+            <text class="picker-arrow">▼</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 详细地址 -->
+    <view class="form-section">
+      <view class="form-item">
+        <text class="form-label">详细地址</text>
+        <textarea class="form-textarea" placeholder="请输入详细地址，如街道、门牌号等" value="{{detail}}" bindinput="bindDetailInput" />
+      </view>
+    </view>
+
+    <!-- 默认地址 -->
+    <view class="form-section">
+      <view class="form-item checkbox-item">
+        <text class="form-label">设为默认地址</text>
+        <switch class="form-switch" checked="{{isDefault}}" bindchange="toggleDefault" />
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view class="form-section">
+      <button class="submit-btn" bindtap="submitAddress" loading="{{submitting}}" disabled="{{submitting}}">
+        {{id ? '保存修改' : '保存地址'}}
+      </button>
+    </view>
+  </view>
+</view>

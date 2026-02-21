@@ -1,0 +1,480 @@
+/* pages/profile/profile.wxss - iOS风格毛玻璃效果 */
+
+.profile-container {
+  background: linear-gradient(180deg, #FAF5FF 0%, #F3E8FF 50%, #EDE9FE 100%);
+  min-height: 100vh;
+  padding-bottom: 160rpx;
+}
+
+/* ========== 用户信息头部 - 毛玻璃效果 ========== */
+
+.profile-header {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(124, 58, 237, 0.95));
+  backdrop-filter: blur(40rpx);
+  -webkit-backdrop-filter: blur(40rpx);
+  padding: 90rpx 35rpx 60rpx;
+  border-radius: 0 0 48rpx 48rpx;
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 16rpx 48rpx rgba(139, 92, 246, 0.25),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.15);
+}
+
+.profile-header::before {
+  content: '🐾';
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  font-size: 100rpx;
+  opacity: 0.08;
+}
+
+.profile-header::after {
+  content: '🐱';
+  position: absolute;
+  right: 90rpx;
+  bottom: 25rpx;
+  font-size: 75rpx;
+  opacity: 0.08;
+}
+
+.user-avatar {
+  width: 130rpx;
+  height: 130rpx;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 65rpx;
+  margin-right: 28rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+  box-shadow: 
+    0 10rpx 30rpx rgba(0, 0, 0, 0.15),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.user-avatar:active {
+  transform: scale(0.95);
+}
+
+.avatar-emoji {
+  font-size: 65rpx;
+}
+
+.user-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  display: block;
+  font-size: 38rpx;
+  font-weight: 700;
+  text-shadow: 0 2rpx 6rpx rgba(0,0,0,0.2);
+}
+
+.settings-btn {
+  font-size: 44rpx;
+  padding: 18rpx;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15rpx);
+  -webkit-backdrop-filter: blur(15rpx);
+  border-radius: 50%;
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.settings-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ========== 加载状态 ========== */
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.loading-spinner {
+  width: 56rpx;
+  height: 56rpx;
+  border: 4rpx solid rgba(139, 92, 246, 0.15);
+  border-top: 4rpx solid #8B5CF6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 26rpx;
+  color: #9CA3AF;
+}
+
+/* ========== 通用卡片样式 - 毛玻璃效果 ========== */
+
+.section-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(40rpx);
+  -webkit-backdrop-filter: blur(40rpx);
+  margin: 30rpx;
+  padding: 35rpx;
+  border-radius: 28rpx;
+  box-shadow: 
+    0 10rpx 36rpx rgba(139, 92, 246, 0.08),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.6);
+  border: 1rpx solid rgba(255, 255, 255, 0.5);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+}
+
+.section-icon {
+  font-size: 36rpx;
+  margin-right: 16rpx;
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #A78BFA, #8B5CF6);
+  border-radius: 18rpx;
+  box-shadow: 
+    0 6rpx 20rpx rgba(139, 92, 246, 0.25),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.2);
+}
+
+.section-text {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.section-more {
+  font-size: 26rpx;
+  color: #8B5CF6;
+  font-weight: 600;
+  padding: 10rpx 20rpx;
+  background: rgba(139, 92, 246, 0.08);
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+  border-radius: 24rpx;
+  border: 1rpx solid rgba(139, 92, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.section-more:active {
+  background: rgba(139, 92, 246, 0.15);
+  transform: scale(0.97);
+}
+
+/* ========== 订单状态 - 毛玻璃效果 ========== */
+
+.order-status {
+  display: flex;
+  justify-content: space-around;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+
+.status-icon {
+  width: 96rpx;
+  height: 96rpx;
+  background: rgba(139, 92, 246, 0.08);
+  backdrop-filter: blur(15rpx);
+  -webkit-backdrop-filter: blur(15rpx);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42rpx;
+  margin-bottom: 16rpx;
+  border: 1rpx solid rgba(139, 92, 246, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.status-item:active .status-icon {
+  transform: scale(0.92);
+  background: linear-gradient(135deg, #A78BFA, #8B5CF6);
+  box-shadow: 0 8rpx 24rpx rgba(139, 92, 246, 0.3);
+}
+
+.status-text {
+  font-size: 26rpx;
+  color: #4B5563;
+  font-weight: 600;
+}
+
+/* ========== 功能网格 ========== */
+
+.function-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.function-item {
+  width: 33.33%;
+  text-align: center;
+  padding: 28rpx 0;
+  margin-bottom: 18rpx;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.function-item:active {
+  transform: scale(0.97);
+}
+
+.function-icon {
+  font-size: 52rpx;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.function-text {
+  font-size: 26rpx;
+  color: #4B5563;
+  display: block;
+  font-weight: 600;
+}
+
+.function-badge {
+  position: absolute;
+  top: 18rpx;
+  right: 28rpx;
+  min-width: 38rpx;
+  height: 38rpx;
+  background: linear-gradient(135deg, #F472B6, #EC4899);
+  color: white;
+  font-size: 22rpx;
+  border-radius: 19rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10rpx;
+  box-shadow: 0 4rpx 14rpx rgba(244, 114, 182, 0.4);
+  border: 2rpx solid rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+}
+
+/* ========== 服务列表 ========== */
+
+.service-list {
+  margin-top: 12rpx;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid rgba(139, 92, 246, 0.08);
+  transition: all 0.3s ease;
+}
+
+.service-item:last-child {
+  border-bottom: none;
+}
+
+.service-item:active {
+  background: rgba(139, 92, 246, 0.03);
+}
+
+.service-icon {
+  font-size: 42rpx;
+  margin-right: 28rpx;
+  width: 64rpx;
+  text-align: center;
+}
+
+.service-info {
+  flex: 1;
+}
+
+.service-title {
+  display: block;
+  font-size: 28rpx;
+  color: #1F2937;
+  font-weight: 600;
+  margin-bottom: 6rpx;
+}
+
+.service-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #9CA3AF;
+}
+
+.service-arrow {
+  font-size: 28rpx;
+  color: #C4B5FD;
+  margin-left: 18rpx;
+}
+
+/* ========== 退出登录按钮 - 毛玻璃效果 ========== */
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(30rpx);
+  -webkit-backdrop-filter: blur(30rpx);
+  margin: 30rpx;
+  padding: 32rpx;
+  border-radius: 28rpx;
+  text-align: center;
+  color: #EF4444;
+  font-size: 30rpx;
+  font-weight: 600;
+  box-shadow: 
+    0 8rpx 28rpx rgba(239, 68, 68, 0.08),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.6);
+  border: 1rpx solid rgba(239, 68, 68, 0.15);
+  transition: all 0.3s ease;
+}
+
+.logout-btn:active {
+  transform: scale(0.98);
+  background: rgba(254, 226, 226, 0.9);
+}
+
+/* ========== Emoji 头像选择器 - 毛玻璃效果 ========== */
+
+.avatar-picker-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.avatar-picker-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(50rpx);
+  -webkit-backdrop-filter: blur(50rpx);
+  border-radius: 32rpx;
+  width: 90%;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    0 20rpx 60rpx rgba(0, 0, 0, 0.2),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.6);
+  border: 1rpx solid rgba(255, 255, 255, 0.5);
+}
+
+.picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx;
+  border-bottom: 1rpx solid rgba(139, 92, 246, 0.08);
+}
+
+.picker-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.picker-close {
+  font-size: 38rpx;
+  color: #9CA3AF;
+  padding: 12rpx;
+  background: rgba(139, 92, 246, 0.08);
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+  border-radius: 50%;
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.picker-close:active {
+  background: rgba(139, 92, 246, 0.15);
+  transform: scale(0.95);
+}
+
+.emoji-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 24rpx;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.emoji-item {
+  width: 20%;
+  padding: 18rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  margin: 6rpx;
+  transition: all 0.3s ease;
+}
+
+.emoji-item:active {
+  background: rgba(139, 92, 246, 0.1);
+  transform: scale(0.95);
+}
+
+.emoji-item.selected {
+  background: rgba(139, 92, 246, 0.15);
+  border: 2rpx solid #8B5CF6;
+  box-shadow: 0 4rpx 16rpx rgba(139, 92, 246, 0.2);
+}
+
+.emoji-icon {
+  font-size: 55rpx;
+  display: block;
+}
+
+.picker-footer {
+  padding: 24rpx;
+  border-top: 1rpx solid rgba(139, 92, 246, 0.08);
+  text-align: center;
+}
+
+.picker-tip {
+  font-size: 24rpx;
+  color: #9CA3AF;
+}

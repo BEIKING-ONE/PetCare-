@@ -1,0 +1,50 @@
+<view class="coupon-center-page">
+  <!-- 头部 -->
+  <view class="page-header">
+    <text class="page-title">🎫 优惠券中心</text>
+    <text class="page-subtitle">领取优惠券，购物更划算</text>
+  </view>
+
+  <!-- 优惠券列表 -->
+  <view class="coupon-list">
+    <block wx:for="{{coupons}}" wx:key="id">
+      <view class="coupon-card">
+        <view class="coupon-left">
+          <text class="coupon-currency">¥</text>
+          <text class="coupon-amount">{{item.amount}}</text>
+        </view>
+        <view class="coupon-divider"></view>
+        <view class="coupon-right">
+          <text class="coupon-name">{{item.name}}</text>
+          <text class="coupon-condition">满{{item.minAmount}}元可用</text>
+          <text class="coupon-time">有效期至 {{item.expireTime}}</text>
+        </view>
+        <view class="coupon-action">
+          <view class="receive-btn {{item.received ? 'received' : ''}}" 
+                bindtap="{{item.received ? '' : 'receiveCoupon'}}" 
+                data-id="{{item.id}}">
+            <text>{{item.received ? '已领取' : '立即领取'}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{coupons.length === 0 && !loading}}">
+    <text class="empty-icon">🎫</text>
+    <text class="empty-text">暂无可领取的优惠券</text>
+    <text class="empty-tip">敬请期待更多优惠活动</text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="footer-tip" wx:if="{{coupons.length > 0}}">
+    <text>— 已显示全部优惠券 —</text>
+  </view>
+</view>

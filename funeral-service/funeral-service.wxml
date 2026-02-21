@@ -1,0 +1,93 @@
+<!-- pages/funeral-service/funeral-service.wxml -->
+<view class="service-page">
+  <!-- 服务头部 -->
+  <view class="service-header">
+    <text class="service-icon">{{serviceInfo.icon}}</text>
+    <text class="service-title">{{serviceInfo.name}}</text>
+    <text class="service-subtitle">{{serviceInfo.subtitle}}</text>
+  </view>
+
+  <!-- 服务介绍 -->
+  <view class="service-intro">
+    <text class="intro-title">服务介绍</text>
+    <text class="intro-content">{{serviceInfo.description}}</text>
+  </view>
+
+  <!-- 服务套餐 -->
+  <view class="service-packages">
+    <text class="section-title">选择套餐</text>
+    <view class="package-list">
+      <view 
+        class="package-item {{selectedPackage === index ? 'selected' : ''}}" 
+        wx:for="{{serviceInfo.packages}}" 
+        wx:key="index"
+        bindtap="selectPackage"
+        data-index="{{index}}"
+      >
+        <view class="package-header">
+          <text class="package-name">{{item.name}}</text>
+          <text class="package-price">¥{{item.price}}</text>
+        </view>
+        <text class="package-desc">{{item.description}}</text>
+        <view class="package-features">
+          <text class="feature-item" wx:for="{{item.features}}" wx:key="index" wx:for-item="feature">✓ {{feature}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 服务流程 -->
+  <view class="service-process">
+    <text class="section-title">服务流程</text>
+    <view class="process-list">
+      <view class="process-item" wx:for="{{serviceInfo.process}}" wx:key="index">
+        <view class="process-number">{{index + 1}}</view>
+        <view class="process-content">
+          <text class="process-title">{{item.title}}</text>
+          <text class="process-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 预约表单 -->
+  <view class="booking-section">
+    <text class="section-title">预约信息</text>
+    <view class="booking-form">
+      <view class="form-item">
+        <text class="form-label"><text class="required">*</text>宠物姓名</text>
+        <input class="form-input" placeholder="请输入宠物姓名" value="{{petName}}" bindinput="inputPetName" />
+      </view>
+      <view class="form-item">
+        <text class="form-label"><text class="required">*</text>宠物类型</text>
+        <input class="form-input" placeholder="例如：狗狗、猫咪" value="{{petType}}" bindinput="inputPetType" />
+      </view>
+      <view class="form-item">
+        <text class="form-label"><text class="required">*</text>联系电话</text>
+        <input class="form-input" type="number" placeholder="请输入联系电话" value="{{phone}}" bindinput="inputPhone" />
+      </view>
+      <view class="form-item">
+        <text class="form-label">预约时间</text>
+        <picker mode="date" value="{{bookingDate}}" start="{{today}}" end="2030-12-31" bindchange="onDateChange">
+          <view class="picker-input">
+            <text class="picker-text {{bookingDate ? '' : 'placeholder'}}">{{bookingDate || '请选择预约日期'}}</text>
+            <text class="picker-arrow">▼</text>
+          </view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <text class="form-label">备注说明</text>
+        <textarea class="form-textarea" placeholder="请输入其他需求或说明..." value="{{remarks}}" bindinput="inputRemarks" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部提交栏 -->
+  <view class="submit-bar">
+    <view class="price-info">
+      <text class="price-label">预估费用：</text>
+      <text class="price-value">¥{{selectedPrice}}</text>
+    </view>
+    <button class="submit-btn" bindtap="submitBooking">立即预约</button>
+  </view>
+</view>

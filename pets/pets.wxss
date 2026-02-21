@@ -1,0 +1,205 @@
+/* pages/pets/pets.wxss */
+.pets-page {
+  background: linear-gradient(180deg, #FAF5FF 0%, #F5F3FF 100%);
+  min-height: 100vh;
+  padding-bottom: 140rpx;
+}
+
+/* 宠物头部 */
+.pets-header {
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  padding: 80rpx 30rpx 50rpx;
+  border-radius: 0 0 40rpx 40rpx;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pets-header::before {
+  content: '🐾';
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  font-size: 80rpx;
+  opacity: 0.1;
+}
+
+.page-title {
+  font-size: 42rpx;
+  font-weight: bold;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.2);
+}
+
+.add-pet-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 30rpx;
+  padding: 15rpx 30rpx;
+  font-size: 26rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.3);
+}
+
+/* 宠物列表 */
+.pets-list {
+  padding: 30rpx;
+}
+
+.pet-card {
+  background: white;
+  border-radius: 20rpx;
+  margin-bottom: 25rpx;
+  overflow: hidden;
+  box-shadow: 0 6rpx 20rpx rgba(139, 92, 246, 0.08);
+  border: 1rpx solid #E9D5FF;
+  display: flex;
+  align-items: center;
+}
+
+.pet-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  background: linear-gradient(135deg, #FAF5FF, #F3E8FF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx 0 0 20rpx;
+  overflow: hidden;
+}
+
+.pet-avatar-img {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.pet-emoji {
+  font-size: 80rpx;
+}
+
+.pet-info {
+  flex: 1;
+  padding: 25rpx;
+}
+
+.pet-name-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.pet-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1F2937;
+  margin-right: 15rpx;
+}
+
+.pet-type {
+  background: #F3E8FF;
+  color: #8B5CF6;
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 15rpx;
+}
+
+.pet-details {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15rpx;
+}
+
+.detail-item {
+  font-size: 24rpx;
+  color: #6B7280;
+  margin-right: 20rpx;
+  margin-bottom: 8rpx;
+}
+
+.pet-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15rpx;
+}
+
+.meta-item {
+  font-size: 22rpx;
+  color: #9CA3AF;
+}
+
+.meta-item.health-healthy {
+  color: #10B981;
+}
+
+.meta-item.health-sick {
+  color: #F59E0B;
+}
+
+.pet-actions {
+  width: 150rpx;
+  height: 150rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15rpx;
+}
+
+.action-btn {
+  flex: 1;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 25rpx;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 15rpx;
+}
+
+.action-btn.edit {
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  color: white;
+  box-shadow: 0 4rpx 12rpx rgba(139, 92, 246, 0.3);
+}
+
+.action-btn.delete {
+  background: #FEE2E2;
+  color: #EF4444;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 100rpx 30rpx;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  display: block;
+  margin-bottom: 30rpx;
+  color: #C4B5FD;
+}
+
+.empty-text {
+  display: block;
+  font-size: 32rpx;
+  color: #6B7280;
+  margin-bottom: 15rpx;
+}
+
+.empty-tip {
+  font-size: 26rpx;
+  color: #9CA3AF;
+}
+
+.add-first-btn {
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  color: white;
+  border-radius: 30rpx;
+  padding: 20rpx 60rpx;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  box-shadow: 0 8rpx 24rpx rgba(139, 92, 246, 0.35);
+}

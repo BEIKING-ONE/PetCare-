@@ -1,0 +1,99 @@
+<!-- pages/faq/faq.wxml -->
+<view class="faq-page">
+  <view class="faq-header">
+    <text class="page-title">📧 常见问题</text>
+  </view>
+
+  <view class="search-box">
+    <view class="search-input-wrapper">
+      <text class="search-icon">🔍</text>
+      <input 
+        class="search-input" 
+        placeholder="搜索问题..." 
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+      />
+      <text class="clear-icon" wx:if="{{searchKeyword}}" bindtap="clearSearch">✕</text>
+    </view>
+  </view>
+
+  <view class="category-tabs">
+    <scroll-view scroll-x class="category-scroll">
+      <view 
+        class="category-item {{activeCategory === '' ? 'active' : ''}}" 
+        bindtap="switchCategory" 
+        data-category=""
+      >
+        全部
+      </view>
+      <view 
+        class="category-item {{activeCategory === 'account' ? 'active' : ''}}" 
+        bindtap="switchCategory" 
+        data-category="account"
+      >
+        账号相关
+      </view>
+      <view 
+        class="category-item {{activeCategory === 'order' ? 'active' : ''}}" 
+        bindtap="switchCategory" 
+        data-category="order"
+      >
+        订单相关
+      </view>
+      <view 
+        class="category-item {{activeCategory === 'payment' ? 'active' : ''}}" 
+        bindtap="switchCategory" 
+        data-category="payment"
+      >
+        支付相关
+      </view>
+      <view 
+        class="category-item {{activeCategory === 'delivery' ? 'active' : ''}}" 
+        bindtap="switchCategory" 
+        data-category="delivery"
+      >
+        配送相关
+      </view>
+      <view 
+        class="category-item {{activeCategory === 'other' ? 'active' : ''}}" 
+        bindtap="switchCategory" 
+        data-category="other"
+      >
+        其他问题
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="faq-list" wx:if="{{filteredQuestions.length > 0}}">
+    <block wx:for="{{filteredQuestions}}" wx:key="id">
+      <view class="faq-item">
+        <view class="faq-question" bindtap="toggleQuestion" data-id="{{item.id}}">
+          <view class="question-left">
+            <text class="question-icon">❓</text>
+            <text class="question-text">{{item.question}}</text>
+          </view>
+          <text class="expand-icon {{item.expanded ? 'expanded' : ''}}">▼</text>
+        </view>
+        <view class="faq-answer {{item.expanded ? 'expanded' : ''}}" wx:if="{{item.expanded}}">
+          <text class="answer-text">{{item.answer}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="empty-state" wx:if="{{filteredQuestions.length === 0 && !loading}}">
+    <text class="empty-icon">🔍</text>
+    <text class="empty-text">未找到相关问题</text>
+    <text class="empty-tip">换个关键词试试吧</text>
+  </view>
+
+  <view class="loading-state" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <view class="contact-section">
+    <text class="contact-title">没有找到答案？</text>
+    <button class="contact-btn" bindtap="contactService">联系客服</button>
+  </view>
+</view>

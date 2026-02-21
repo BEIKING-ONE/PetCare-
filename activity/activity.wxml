@@ -1,0 +1,69 @@
+<!-- pages/activity/activity.wxml -->
+<view class="activity-page">
+  <!-- 页面头部 -->
+  <view class="activity-header">
+    <text class="page-title">🎉 活动专区</text>
+    <text class="page-desc">精彩活动，不容错过</text>
+  </view>
+
+  <!-- 分类筛选 -->
+  <view class="category-filter">
+    <view class="filter-item {{activeCategory === 'all' ? 'active' : ''}}" bindtap="switchCategory" data-cat="all">
+      <text class="filter-text">全部</text>
+    </view>
+    <view class="filter-item {{activeCategory === 'limited' ? 'active' : ''}}" bindtap="switchCategory" data-cat="limited">
+      <text class="filter-text">限时活动</text>
+    </view>
+    <view class="filter-item {{activeCategory === 'member' ? 'active' : ''}}" bindtap="switchCategory" data-cat="member">
+      <text class="filter-text">会员专享</text>
+    </view>
+    <view class="filter-item {{activeCategory === 'festival' ? 'active' : ''}}" bindtap="switchCategory" data-cat="festival">
+      <text class="filter-text">节日特惠</text>
+    </view>
+    <view class="filter-item {{activeCategory === 'newuser' ? 'active' : ''}}" bindtap="switchCategory" data-cat="newuser">
+      <text class="filter-text">新人礼包</text>
+    </view>
+  </view>
+
+  <!-- 活动列表 -->
+  <view class="activity-list">
+    <block wx:for="{{filteredActivities}}" wx:key="id">
+      <view class="activity-card" bindtap="viewActivityDetail" data-id="{{item.id}}">
+        <view class="activity-emoji">{{item.emoji}}</view>
+        <view class="activity-content">
+          <view class="activity-badge {{item.type}}">{{item.typeText}}</view>
+          <text class="activity-title">{{item.title}}</text>
+          <text class="activity-desc">{{item.description}}</text>
+          <view class="activity-info">
+            <text class="activity-time">⏰ {{item.time}}</text>
+            <text class="activity-status {{item.status}}">{{item.statusText}}</text>
+          </view>
+          <view class="activity-footer">
+            <text class="activity-price">💰 {{item.price}}</text>
+            <text class="activity-participants">👥 {{item.participants}}人参与</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && filteredActivities.length === 0}}">
+    <text class="empty-emoji">📭</text>
+    <text class="empty-title">暂无活动</text>
+    <text class="empty-desc">精彩活动即将上线，敬请期待</text>
+  </view>
+
+  <!-- 分页控件 -->
+  <view class="pagination" wx:if="{{hasMore && !loading}}">
+    <view class="pagination-btn" bindtap="loadMore">
+      <text class="pagination-text">加载更多</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,65 @@
+<!-- pages/customer-chat/customer-chat.wxml -->
+<view class="chat-page">
+  <!-- 聊天头部 -->
+  <view class="chat-header">
+    <view class="header-left">
+      <text class="service-avatar">👨‍💼</text>
+      <view class="service-info">
+        <text class="service-name">在线客服</text>
+        <text class="service-status">在线</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 聊天消息区域 -->
+  <scroll-view class="chat-messages" scroll-y scroll-into-view="{{scrollToView}}" scroll-with-animation>
+    <!-- 时间分隔 -->
+    <view class="time-divider" wx:if="{{messages.length > 0}}">
+      <text>今天</text>
+    </view>
+
+    <!-- 消息列表 -->
+    <block wx:for="{{messages}}" wx:key="id">
+      <!-- 客服消息 -->
+      <view class="message-item service" wx:if="{{item.type === 'service'}}" id="msg-{{index}}">
+        <view class="avatar">👨‍💼</view>
+        <view class="message-content">
+          <view class="message-bubble">{{item.content}}</view>
+          <text class="message-time">{{item.time}}</text>
+        </view>
+      </view>
+
+      <!-- 用户消息 -->
+      <view class="message-item user" wx:if="{{item.type === 'user'}}" id="msg-{{index}}">
+        <view class="message-content">
+          <view class="message-bubble">{{item.content}}</view>
+          <text class="message-time">{{item.time}}</text>
+        </view>
+        <view class="avatar">😊</view>
+      </view>
+    </block>
+
+    <!-- 快捷回复 -->
+    <view class="quick-replies" wx:if="{{showQuickReplies}}">
+      <text class="quick-title">快捷问题</text>
+      <view class="quick-list">
+        <view class="quick-item" wx:for="{{quickReplies}}" wx:key="index" bindtap="sendQuickReply" data-content="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 输入区域 -->
+  <view class="chat-input-area">
+    <input 
+      class="chat-input" 
+      placeholder="请输入您的问题..." 
+      value="{{inputContent}}"
+      bindinput="onInputChange"
+      confirm-type="send"
+      bindconfirm="sendMessage"
+    />
+    <button class="send-btn {{inputContent ? 'active' : ''}}" bindtap="sendMessage">发送</button>
+  </view>
+</view>

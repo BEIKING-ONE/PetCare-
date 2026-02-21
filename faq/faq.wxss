@@ -1,0 +1,245 @@
+/* pages/faq/faq.wxss */
+.faq-page {
+  background: linear-gradient(180deg, #FAF5FF 0%, #F5F3FF 100%);
+  min-height: 100vh;
+  padding-bottom: 140rpx;
+}
+
+.faq-header {
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  padding: 60rpx 30rpx 50rpx;
+  border-radius: 0 0 40rpx 40rpx;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-header::before {
+  content: '❓';
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  font-size: 80rpx;
+  opacity: 0.1;
+}
+
+.page-title {
+  font-size: 42rpx;
+  font-weight: bold;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.2);
+}
+
+.search-box {
+  background: white;
+  margin: -20rpx 30rpx 20rpx;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(139, 92, 246, 0.1);
+  border: 1rpx solid #E9D5FF;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #FAF5FF;
+  border-radius: 30rpx;
+  padding: 15rpx 25rpx;
+  border: 1rpx solid #E9D5FF;
+}
+
+.search-icon {
+  font-size: 28rpx;
+  margin-right: 15rpx;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #1F2937;
+}
+
+.clear-icon {
+  font-size: 28rpx;
+  color: #9CA3AF;
+  padding: 10rpx;
+}
+
+.category-tabs {
+  background: white;
+  margin: 0 30rpx 20rpx;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(139, 92, 246, 0.08);
+  border: 1rpx solid #E9D5FF;
+}
+
+.category-scroll {
+  white-space: nowrap;
+}
+
+.category-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16rpx 30rpx;
+  margin-right: 20rpx;
+  background: #FAF5FF;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: #6B7280;
+  border: 1rpx solid #E9D5FF;
+}
+
+.category-item.active {
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  color: white;
+  border-color: transparent;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(139, 92, 246, 0.3);
+}
+
+.faq-list {
+  padding: 0 30rpx;
+}
+
+.faq-item {
+  background: white;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(139, 92, 246, 0.08);
+  border: 1rpx solid #E9D5FF;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+}
+
+.question-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.question-icon {
+  font-size: 32rpx;
+  margin-right: 15rpx;
+}
+
+.question-text {
+  font-size: 28rpx;
+  color: #1F2937;
+  font-weight: 500;
+  flex: 1;
+}
+
+.expand-icon {
+  font-size: 24rpx;
+  color: #9CA3AF;
+  transition: transform 0.3s;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 30rpx 30rpx;
+  border-top: 1rpx solid #E9D5FF;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.faq-answer.expanded {
+  max-height: 1000rpx;
+  padding-top: 30rpx;
+}
+
+.answer-text {
+  font-size: 26rpx;
+  color: #6B7280;
+  line-height: 1.8;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 100rpx 30rpx;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  display: block;
+  margin-bottom: 30rpx;
+  color: #C4B5FD;
+}
+
+.empty-text {
+  display: block;
+  font-size: 32rpx;
+  color: #6B7280;
+  margin-bottom: 15rpx;
+}
+
+.empty-tip {
+  font-size: 26rpx;
+  color: #9CA3AF;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+}
+
+.loading-spinner {
+  width: 50rpx;
+  height: 50rpx;
+  border: 3rpx solid #E9D5FF;
+  border-top: 3rpx solid #8B5CF6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 24rpx;
+  color: #9CA3AF;
+}
+
+.contact-section {
+  background: white;
+  margin: 30rpx;
+  padding: 40rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 20rpx rgba(139, 92, 246, 0.08);
+  border: 1rpx solid #E9D5FF;
+}
+
+.contact-title {
+  display: block;
+  font-size: 28rpx;
+  color: #6B7280;
+  margin-bottom: 25rpx;
+}
+
+.contact-btn {
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  color: white;
+  border-radius: 30rpx;
+  padding: 20rpx 60rpx;
+  font-size: 28rpx;
+  border: none;
+  box-shadow: 0 4rpx 16rpx rgba(139, 92, 246, 0.3);
+}
